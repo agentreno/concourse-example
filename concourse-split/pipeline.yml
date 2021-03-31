@@ -1,0 +1,26 @@
+---
+resources:
+  - name: app
+    type: git
+    source:
+      uri: https://github.com/agentreno/concourse-example.git
+      branch: master
+
+jobs:
+  - name: unit-tests
+    public: true
+    plan:
+      - get: app
+        trigger: true
+      - task: run-pytest
+        config:
+          inputs:
+            - name: app
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: {repository: python, tag: 3.9}
+          run:
+            dir: app/app
+            path: sh
+            args: concourse-split/unit-tests.sh
