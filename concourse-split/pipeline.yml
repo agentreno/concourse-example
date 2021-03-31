@@ -21,4 +21,4 @@ jobs:
             type: registry-image
             source: {repository: python, tag: 3.9}
           run:
-            path: concourse-split/unit-tests.sh
+            path: app/concourse-split/unit-tests.sh
