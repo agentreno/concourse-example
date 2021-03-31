@@ -24,6 +24,7 @@ jobs:
             path: sh
             args:
               - -c
-              - pip install poetry
-              - poetry install
-              - poetry run pytest
+              - |
+                pip install poetry
+                poetry install
+                poetry run pytest
