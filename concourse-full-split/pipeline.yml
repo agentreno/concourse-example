@@ -1,0 +1,16 @@
+---
+resources:
+  - name: app
+    type: git
+    source:
+      uri: https://github.com/agentreno/concourse-example.git
+      branch: master
+
+jobs:
+  - name: unit-tests
+    public: true
+    plan:
+      - get: app
+        trigger: true
+      - task: run-pytest
+        file: app/concourse-full-split/unit-tests/unit-tests.yml
