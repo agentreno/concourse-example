@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd app
+cd app/app
 pip install poetry
 poetry install
 poetry run pytest
