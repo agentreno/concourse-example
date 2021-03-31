@@ -21,5 +21,11 @@ jobs:
             type: registry-image
             source: {repository: python, tag: 3.9}
           run:
-            dir: app
-            file: concourse/unit-tests.sh
+            dir: app/app
+            path: sh
+            args:
+              - "-c"
+              - |
+                pip install poetry
+                poetry install
+                poetry run pytest
