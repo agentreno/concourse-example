@@ -14,5 +14,13 @@ jobs:
         trigger: true
       - task: unit-tests
         file: app/concourse-full-split/unit-tests/unit-tests.yml
+
+  - name: build-and-push
+    public: true
+    plan:
+      - get: app
+        passed:
+          - unit-tests
+        trigger: true
       - task: build
         file: app/concourse-full-split/build/build.yml
