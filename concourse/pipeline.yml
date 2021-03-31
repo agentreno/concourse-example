@@ -1,0 +1,26 @@
+---
+resources:
+  - name: app
+    type: git
+    source:
+      uri: https://github.com/agentreno/concourse-example.git
+      branch: master
+
+jobs:
+  - name: unit-tests
+    plan:
+      - get: app
+        trigger: true
+      - task: run-pytest
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: {repository: python, tag: 3.9}
+          run:
+            path: sh
+            args:
+              - -c
+              - pip install poetry
+              - poetry install
+              - poetry run pytest
