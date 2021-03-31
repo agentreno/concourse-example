@@ -8,6 +8,7 @@ resources:
 
 jobs:
   - name: unit-tests
+    public: true
     plan:
       - get: app
         trigger: true
