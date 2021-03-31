@@ -12,5 +12,7 @@ jobs:
     plan:
       - get: app
         trigger: true
-      - task: run-pytest
+      - task: unit-tests
         file: app/concourse-full-split/unit-tests/unit-tests.yml
+      - task: build
+        file: app/concourse-full-split/build/build.yml

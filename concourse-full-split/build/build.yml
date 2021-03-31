@@ -1,0 +1,11 @@
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: python, tag: 3.9}
+
+inputs:
+  - name: app
+
+run:
+  path: app/concourse-full-split/build/build.sh
